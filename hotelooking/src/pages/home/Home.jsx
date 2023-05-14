@@ -10,11 +10,13 @@ const Home = () => {
     <div>
       <Navbar />
       <Header />
-      <div className="homeContainer">
-        <FeaturedCities />
-        <h1 className="homeTitle">Browse by property type</h1>
-        <PropertyList />
-        <Footer />
+      <div className="homePage">
+        <div className="homeContainer">
+          <FeaturedCities />
+          <h1 className="homeTitle">Browse by property type</h1>
+          <PropertyList />
+          <Footer />
+        </div>
       </div>
     </div>
   );

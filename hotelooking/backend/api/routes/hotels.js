@@ -3,8 +3,6 @@ import {
   countByCity,
   countByType,
   getHotelRooms,
-} from "../controllers/hotelController.js";
-import {
   createHotel,
   updateHotel,
   deleteHotel,

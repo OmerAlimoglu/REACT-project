@@ -9,13 +9,13 @@ import {
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css fil
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
-import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -43,9 +43,9 @@ const Header = ({ type }) => {
     });
   };
 
-  const { dispatch } = useContext(SearchContext);
-
   const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
 
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
@@ -87,7 +87,7 @@ const Header = ({ type }) => {
             <p className="headerDesc">
               Book your hotel untill the end of May and get a 20% discount.
             </p>
-            <button className="headerBtn">sign in / Register</button>
+            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

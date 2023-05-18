@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { useContext, useState } from "react";
 import Reserve from "../../components/reserve/Reserve";
+import { AuthContext } from "../../context/AuthContext";
 
 const SingleHotel = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const SingleHotel = () => {
   const { data, loading, error } = useFetch(`/hotels/find/${hotelId}`);
 
   const { dates, options } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
 
   //calculate the stay date
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -30,8 +32,11 @@ const SingleHotel = () => {
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleClick = () => {
-    setOpenReserve(true);
-    navigate("/hotels/:id"); //navigate this to the booking page
+    if (user) {
+      setOpenReserve(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (

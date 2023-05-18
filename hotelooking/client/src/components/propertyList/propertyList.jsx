@@ -11,15 +11,13 @@ const PropertyList = () => {
     "https://q-xx.bstatic.com/xdata/images/xphoto/263x210/45450074.jpeg?k=7039b03a94f3b99262c4b3054b0edcbbb91e9dade85b6efc880d45288a06c126&o=",
   ];
 
-  console.log(data);
-
   return (
     <div className="pList">
       {loading ? (
         "loading"
       ) : (
         <>
-          {!data &&
+          {data.length > 0 &&
             images.map((item, index) => (
               <div className="pListItem" key={index}>
                 <img src={item} alt="hotel Room" className="pListImg" />

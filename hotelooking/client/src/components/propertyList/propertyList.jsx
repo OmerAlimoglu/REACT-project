@@ -19,7 +19,7 @@ const PropertyList = () => {
         "loading"
       ) : (
         <>
-          {data &&
+          {!data &&
             images.map((item, index) => (
               <div className="pListItem" key={index}>
                 <img src={item} alt="hotel Room" className="pListImg" />

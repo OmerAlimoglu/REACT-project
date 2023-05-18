@@ -3,14 +3,28 @@ import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faParking } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { useContext } from "react";
 
 const SingleHotel = () => {
   const location = useLocation();
   const hotelId = location.pathname.split("/")[2];
-  const { data, loading, error, reFetch } = useFetch(`/hotels/find/${hotelId}`);
+  const { data, loading, error } = useFetch(`/hotels/find/${hotelId}`);
+
+  const { dates, options } = useContext(SearchContext);
+
+  //calculate the stay date
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   return (
     <div>
@@ -45,13 +59,15 @@ const SingleHotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a 23-night stay!</h1>
+                <h1>Perfect for a {days}-night stay!</h1>
                 <span>
                   Top location: Highly rated by recent guests <em>8.9</em>
                   <br /> Popular with solo travellers
                 </span>
+                <p>Private parking at the hotel</p>
                 <h2>
-                  <p>Private parking at the hotel</p>
+                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  nights)
                 </h2>
                 <button>Reserve or Book now</button>
               </div>

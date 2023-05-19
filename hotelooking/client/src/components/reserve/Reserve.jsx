@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading, error } = useFetch(`hotels/room/${hotelId}`);
+  const { data, loading, error } = useFetch(`room/${hotelId}`);
   const { dates } = useContext(SearchContext);
 
   const getDatesInRange = (startDate, endDate) => {
@@ -61,7 +61,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         })
       );
       setOpen(false);
-      navigate("/");
+      navigate("/login");
     } catch (err) {}
   };
 
@@ -85,16 +85,19 @@ const Reserve = ({ setOpen, hotelId }) => {
                 </div>
                 <div className="rPrice">{item.price}</div>
               </div>
-              {item.roomNumbers.map((roomNumber) => (
-                <div className="room">
-                  <label>{roomNumber.number}</label>
-                  <input
-                    type="checkbox"
-                    value={roomNumber._id}
-                    onChange={handleSelect}
-                  />
-                </div>
-              ))}
+              <div className="rSelectRooms">
+                {item.roomNumbers.map((roomNumber) => (
+                  <div className="room">
+                    <label>{roomNumber.number}</label>
+                    <input
+                      type="checkbox"
+                      value={roomNumber._id}
+                      onChange={handleSelect}
+                      disabled={!isAvailable(roomNumber)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         <button onClick={handleClick} className="rButton">

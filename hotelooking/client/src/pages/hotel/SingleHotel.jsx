@@ -9,7 +9,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { useContext, useState } from "react";
 import Reserve from "../../components/reserve/Reserve";
-import { AuthContext } from "../../context/AuthContext";
 
 const SingleHotel = () => {
   const location = useLocation();
@@ -17,11 +16,9 @@ const SingleHotel = () => {
   const navigate = useNavigate();
   const [openReserve, setOpenReserve] = useState(false);
   const { data, loading, error } = useFetch(`/hotels/find/${hotelId}`);
-
   const { dates, options } = useContext(SearchContext);
-  const { user } = useContext(AuthContext);
 
-  //calculate the accomodation date
+  //calculate the accommodation date
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());

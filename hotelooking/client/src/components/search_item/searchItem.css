@@ -1,6 +1,7 @@
 .searchItem {
   border: 1px solid #f2f6fa;
   display: flex;
+  flex-direction: column;
   padding: 10px;
   border-radius: 5px;
   justify-content: space-between;
@@ -9,25 +10,26 @@
 }
 
 .siImg {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 70%;
+  height: 40vh;
+  align-self: center;
+  object-fit: contain;
 }
 
 .siDesc {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 2;
+  flex: 3;
 }
 
 .siTitle {
-  font-size: 20px;
+  font-size: 24px;
   color: #009fe3;
 }
 
 .siDistance {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .siSubtitle {
@@ -36,7 +38,7 @@
 }
 
 .siFeatures {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .siCancelOp {
@@ -73,6 +75,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-top: 5px;
 }
 
 .siPrice {
@@ -80,7 +83,7 @@
 }
 
 .siTaxOp {
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
 }
 

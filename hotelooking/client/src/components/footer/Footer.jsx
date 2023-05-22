@@ -3,6 +3,7 @@ const Footer = () => {
   return (
     <div>
       <div className="footer">
+        <span className="footerTop"></span>
         <div className="fLists">
           <ul className="fList">
             <li className="fListItem">Countries</li>

@@ -46,7 +46,8 @@ export const getHotel = async (req, res, next) => {
 
 export const getHotels = async (req, res, next) => {
   try {
-    const hotels = await Hotel.find();
+    console.log("aaa", req.query.city);
+    const hotels = await Hotel.find({ city: `${req.query.city}` });
     res.status(200).json(hotels);
   } catch (err) {
     next(err);

@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { useContext, useState } from "react";
 import Reserve from "../../components/reserve/Reserve";
@@ -13,7 +13,6 @@ import Reserve from "../../components/reserve/Reserve";
 const SingleHotel = () => {
   const location = useLocation();
   const hotelId = location.pathname.split("/")[2];
-  const navigate = useNavigate();
   const [openReserve, setOpenReserve] = useState(false);
   const { data, loading, error } = useFetch(`/hotels/find/${hotelId}`);
   const { dates, options } = useContext(SearchContext);
@@ -53,11 +52,9 @@ const SingleHotel = () => {
               Book a stay over ${data.cheapestPrice} at this property..
             </span>
             <div className="hotelImages">
-              {data.photos?.map((photo) => (
-                <div className="hotelImgWrapper">
-                  <img src={photo} alt="" className="hotelImg" />
-                </div>
-              ))}
+              <div className="hotelImgWrapper">
+                <img src={data.photos} alt="" className="hotelImg" />
+              </div>
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsText">

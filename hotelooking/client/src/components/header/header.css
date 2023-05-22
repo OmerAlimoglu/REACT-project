@@ -13,7 +13,7 @@
 }
 
 .headerContainer.listMode {
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 20px 0px;
 }
 
 .headerList {
@@ -25,6 +25,14 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.headerListItem:hover {
+  background-color: rgba(242, 246, 250, 0.6);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .headerListItem.active {
@@ -35,15 +43,6 @@
 
 .headerDesc {
   margin: 20px 0px;
-}
-
-.headerBtn {
-  background-color: #009fe3;
-  color: white;
-  font-weight: 500;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
 }
 
 .headerSearch {
@@ -62,7 +61,7 @@
 }
 
 .headerIcon {
-  color: lightgray;
+  color: #666;
 }
 
 .headerSearchItem {
@@ -78,6 +77,15 @@
 
 .headerSearchText {
   color: lightgray;
+  cursor: pointer;
+}
+
+.headerBtn {
+  background-color: #0071c2;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -98,7 +106,7 @@
 }
 
 .optionItem {
-  width: 200px;
+  width: 25vh;
   display: flex;
   justify-content: space-between;
   margin: 10px;

@@ -7,16 +7,17 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Reserve from "../../components/reserve/Reserve";
 
 const SingleHotel = () => {
   const location = useLocation();
   const hotelId = location.pathname.split("/")[2];
+  const [openReserve, setOpenReserve] = useState(false);
   const { data, loading, error } = useFetch(`/hotels/find/${hotelId}`);
-
   const { dates, options } = useContext(SearchContext);
 
-  //calculate the stay date
+  //calculate the accommodation date
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -25,6 +26,10 @@ const SingleHotel = () => {
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
+
+  const handleClick = () => {
+    return setOpenReserve(true);
+  };
 
   return (
     <div>
@@ -47,11 +52,9 @@ const SingleHotel = () => {
               Book a stay over ${data.cheapestPrice} at this property..
             </span>
             <div className="hotelImages">
-              {data.photos?.map((photo) => (
-                <div className="hotelImgWrapper">
-                  <img src={photo} alt="" className="hotelImg" />
-                </div>
-              ))}
+              <div className="hotelImgWrapper">
+                <img src={data.photos} alt="" className="hotelImg" />
+              </div>
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsText">
@@ -69,13 +72,14 @@ const SingleHotel = () => {
                   <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
                 </h2>
-                <button>Reserve or Book now</button>
+                <button onClick={handleClick}>Reserve or Book now</button>
               </div>
             </div>
             <Footer />
           </div>
         </div>
       )}
+      {openReserve && <Reserve setOpen={setOpenReserve} hotelId={hotelId} />}
     </div>
   );
 };

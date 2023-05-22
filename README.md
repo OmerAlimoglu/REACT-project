@@ -1,9 +1,9 @@
 # REACT-project
-# Hotel Booking App
+# hotelooking App
 There will be a screenshot here from the app..
 
 ## Description
-This is a hotel reservation application which allows you to search among a great range of hotel options all around the world and select your hotel whereever and whenever you want. 
+This is a hotel reservation application which is for its exclusive members. It allows you to search among some great hotels options all around the world and select your hotel whereever and whenever you want. 
 [full description will be added later]
 
 ## Demo
@@ -14,7 +14,77 @@ Online deployment of this project is available here: "I'll add the demo link her
 ## The project structure
 
 ```text
-The structure will be updated during the project.
+hotelooking
+└── backend
+    └── api
+       └── controllers
+          └── hotelController.js
+          └── roomController.js
+       └── models
+          └── Hotel.js
+          └── Room.js
+       └── routes
+          └── hotels.js
+          └── rooms.js
+       └── utils
+          └── error.js
+    └── node_modules
+    |__ index.js
+        
+    
+└── client
+    └── public
+       └── index.html
+    └── src
+       └── components
+           └── count
+               └── count.jsx
+           └── featured_cities
+               └── FeaturedCities.jsx
+               └── featuredCities.css
+           └── footer
+               └── Footer.jsx
+               └── footer.css
+           └── header
+               └── Header.jsx
+               └── header.css
+           └── navbar
+               └── Navbar.jsx
+               └── navbar.css
+           └── propertyList
+               └── propertyList.jsx
+               └── propertyList.css
+               └── hotelImages.js
+           └── reserve
+               └── Reserve.jsx
+               └── reserve.css
+           └── search_item
+               └── SearchItem.jsx
+               └── searchItem.css
+           
+       └── context
+           └── SearchContext.js
+       └── hooks  
+           └── useFetch.js
+       └── pages
+          └── home
+              └── Home.jsx
+              └── home.css
+          └── hotel
+              └── SingleHotel.jsx
+              └── singleHotel.css
+          └── hotelList
+              └── HotelList.jsx
+              └── hotelList.css
+          └── login
+              └── Login.jsx
+              └── login.css.jsx
+              
+    └── App.js
+    └── index.js
+        
+
+
 
 ```
 ## Setup
@@ -27,14 +97,13 @@ I'm thinking to add setup info..
 1. Create the project structure
 2. Create a search bar according to place, date and number of persons.
 3. Create a navbar at the top.
-4. Create a register and log in buttons.
-5. Create a home page.
-6. Create a result page.
-7. Create a single hotel description page
-8. Add the ability to adding the price and display the sum.
-9. Create your own backend. 
-10. Use mongodb as your database and fetch the data from there.
-11. Prepare the repository
+4. Create a home page. 
+5. Create a search result page.
+6. Create a single hotel description page
+7. Add the ability to calculate the price and display the sum.
+8. Create your own backend. 
+9. Use mongodb as your database and fetch the data from there.
+10. Prepare the repository
 
 ## NICE-TO-HAVE
 - a new page for register and login. 

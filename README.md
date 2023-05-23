@@ -91,6 +91,10 @@ hotelooking
 
 I'm thinking to add setup info..
 
+## Color Palette
+
+![Color Palette](screenshots/color-palette.png)
+
  
 
 ## MUST-HAVE

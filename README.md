@@ -1,6 +1,6 @@
 # REACT-project
 # hotelooking App
-![App Homepage](screenshots/app_homepage.png)
+![App Homepage](screenshots/app-homepage.png)
 
 ## Description
 This is a hotel reservation application which is for its exclusive members. It allows you to search among some great hotels options all around the world and select your hotel whereever and whenever you want. 
